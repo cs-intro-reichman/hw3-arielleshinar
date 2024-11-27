@@ -91,22 +91,21 @@ public class Anagram {
 		//char[] newArray = new char [str.length()];
 		//int[] count1 = new int[26];
 		//int[] count2 = new int[26];
-		
-		while(isAnagram(str, newStr) == false) {
-			
-			Random rand = new Random();
-			// Generate a random index between 0 and array.length - 1
-       		int randomIndex = rand.nextInt(charArray1.length);
-			
-			if (Character.isDigit(charArray1[randomIndex]) == false){
-				newStr += charArray1[randomIndex];
-				charArray1[randomIndex] = 0;
-
-			}
-		
-		}
 		while (newStr.length() < str.length()){
-			newStr += " ";
+
+			while(isAnagram(str, newStr) == false) {
+			
+				Random rand = new Random();
+				// Generate a random index between 0 and array.length - 1
+       			int randomIndex = rand.nextInt(charArray1.length);
+				
+				if (Character.isDigit(charArray1[randomIndex]) == false){
+					newStr += charArray1[randomIndex];
+					charArray1[randomIndex] = 0;
+
+				}
+		
+			}
 		}
 
 		return newStr;
