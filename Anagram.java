@@ -39,10 +39,10 @@ public class Anagram {
         // Convert the string into a character array
         char[] charArray1 = str1.toCharArray();
 		char[] charArray2 = str2.toCharArray();
-		int[] count1 = new int[26];
-		int[] count2 = new int[26];
+		int[] count1 = new int[27];
+		int[] count2 = new int[27];
 
-		String abc = "abcdefghijklmnopqrstuvwxyz";
+		String abc = "abcdefghijklmnopqrstuvwxyz ";
 		//goes over the array and checks whats the index of the letter in the alphabet and adds to counter
 		for(int i = 0; i<charArray1.length; i++){
 			
@@ -70,7 +70,7 @@ public class Anagram {
 		//turn the string into lower case letters
 		str = str.toLowerCase();
 		String cleanStr = "";
-		String lowerabc = "abcdefghijklmnopqrstuvwxyz";
+		String lowerabc = "abcdefghijklmnopqrstuvwxyz ";
 		for (int i = 0; i<str.length(); i++){
 			char c = str.charAt(i);
 			//make sure char at i is not a number
