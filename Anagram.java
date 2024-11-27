@@ -105,6 +105,9 @@ public class Anagram {
 			}
 		
 		}
+		while (newStr.length() < str.length()){
+			newStr += " ";
+		}
 
 		return newStr;
 	} 
