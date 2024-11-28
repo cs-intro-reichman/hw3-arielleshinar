@@ -91,7 +91,7 @@ public class Anagram {
 		//char[] newArray = new char [str.length()];
 		//int[] count1 = new int[26];
 		//int[] count2 = new int[26];
-		while (newStr.length() < str.length()){
+		
 
 			while(isAnagram(str, newStr) == false) {
 			
@@ -105,6 +105,15 @@ public class Anagram {
 
 				}
 		
+			}
+		if (str.length() > newStr.length()){
+			while (str.length() != newStr.length()){
+				newStr += " ";
+			}
+		}
+		if (str.length() < newStr.length()){
+			while (str.length() != newStr.length()){
+				str += " ";
 			}
 		}
 
