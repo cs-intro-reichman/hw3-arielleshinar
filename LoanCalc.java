@@ -7,6 +7,7 @@ public class LoanCalc {
 	// Gets the loan data and computes the periodical payment.
     // Expects to get three command-line arguments: loan amount (double),
     // interest rate (double, as a percentage), and number of payments (int).  
+	
 	public static void main(String[] args) {		
 		// Gets the loan data
 		double loan = Double.parseDouble(args[0]);
@@ -28,8 +29,14 @@ public class LoanCalc {
 	// Computes the ending balance of a loan, given the loan amount, the periodical
 	// interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	private static double endBalance(double loan, double rate, int n, double payment) {	
-		// Replace the following statement with your code
-		return 0;
+		//turn the precent into a number to calc
+		rate = (rate/100) +1;
+		// a loop n times that subtracts the payment until the ending balance (near 0)
+		for(int i=0; i<n; i++){
+
+			loan = (loan - payment) * rate;
+		}
+		return loan;
 	}
 	
 	// Uses sequential search to compute an approximation of the periodical payment
@@ -38,8 +45,16 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
-		// Replace the following statement with your code
-		return 0;
+		
+		iterationCounter = 0;
+		double payment = loan/n;
+
+		//loop that checks if the endbalance is nonnegtive 
+		while (endBalance(loan, rate, n, payment) >=0){
+			iterationCounter++ ;
+			payment += epsilon;
+		}
+		return payment;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
@@ -48,7 +63,26 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
-        // Replace the following statement with your code
-		return 0;
+
+		iterationCounter = 0;
+		//beacuse of the interest rate we know that for loan/g the end balance will be >0
+		double L = loan/n;
+		double H = loan;
+		double g = (L+H) / 2.0;
+	
+		//payment a month is total amount divided by n times the interest		
+			while ((H-L) > epsilon){
+				//condition that check if f(l) * f(g) >0
+				if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, L) > 0){
+					L = g;
+					g=((L+H) / 2.0);
+				} else{
+					H = g;
+					g=((L+H) / 2.0);
+				}
+					iterationCounter++;
+				}
+			
+		return g;
     }
 }
